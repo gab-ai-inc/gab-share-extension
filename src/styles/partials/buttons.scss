@@ -1,0 +1,10 @@
+.btn, button, a {
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+        text-decoration: none;
+    }
+}

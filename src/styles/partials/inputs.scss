@@ -1,0 +1,14 @@
+input,
+textarea {
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    background-color: transparent;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}

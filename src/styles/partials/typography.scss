@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/HelveticaNeue.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-style: bold;
+  font-weight: 600;
+  src: url('../assets/fonts/HelveticaNeue-Bold.woff') format('woff');
+}
+
+div, span, p, a, button, form, label, h1, h2, h3, h4, h5, h6, * {
+    font-family: 'HelveticaNeue', sans-serif;
+}

@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+::-moz-selection {
+    color: #fff;
+    background: #78e8b2;
+}
+
+::selection {
+    color: #fff;
+    background: #78e8b2;
+}
+
+.no-select {
+    user-select: none;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.center {
+    text-align: center;
+}
+
+.abs {
+    position: absolute;
+
+    &--full {
+        @include abs-position(0,0,0,0);
+    }
+}
+
+.rel {
+    position: relative;
+
+    &--full {
+        height: 100%;
+        width: 100%;
+    }
+
+    &--viewport {
+        height: 100vh;
+        width: 100vw;
+    }
+}
+
+.fixed {
+    position: fixed;
+
+    &--full {
+        @include abs-position(0,0,0,0);
+    }
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}

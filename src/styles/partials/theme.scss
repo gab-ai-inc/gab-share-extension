@@ -1,0 +1,41 @@
+.theme {
+    &--light {
+
+        .text-color {
+            &--x1 { color: #000; }
+            &--x2 { color: #999; }
+            &--x3 { color: #ccc; }
+        }
+
+        .background-color {
+            &--x1 { background-color: #fff; }
+            &--x2 { background-color: #fefefe; }
+        }
+
+        .border-color {
+            &--x1 { border-color: #ddd; }
+        }
+    }
+
+    &--dark {
+        .popup {
+            border-radius: 4px;
+            margin: 0 2px;
+        }
+
+        .text-color {
+            &--x1 { color: #fff; }
+            &--x2 { color: #bbb; }
+            &--x3 { color: #888; }
+        }
+
+        .background-color {
+            &--x1 { background-color: #333; }
+            &--x2 { background-color: #1e1e1e; }
+        }
+
+        .border-color {
+            &--x1 { border-color: #000; }
+        }
+    }
+}

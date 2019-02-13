@@ -1,0 +1,87 @@
+/// Position absolute on page
+/// @example scss
+///    @include abs-position(125px, auto, 50px, 15px);
+/// @param {Number} $top [default: auto]
+/// @param {Number} $right [default: auto]
+/// @param {Number} $bottom [default: auto]
+/// @param {Number} $left [default: auto]
+@mixin abs-position($top: auto, $right: auto, $bottom: auto, $left: auto) {
+    top: $top;
+    left: $left;
+    bottom: $bottom;
+    right: $right;
+}
+
+/// Set text sizing
+/// @example scss
+///    @include text-sizing(14px, 500, 20px, center);
+/// @param {Number} $fontSize [default: null]
+/// @param {Number} $fontWeight [default: null]
+/// @param {Number} $lineHeight [default: null]
+/// @param {String} $align [default: left]
+@mixin text-sizing($fontSize, $fontWeight, $lineHeight, $align: left) {
+    @if ($fontSize)   { font-size: $fontSize; }
+    @if ($fontWeight) { font-weight: $fontWeight; }
+    @if ($lineHeight) { line-height: $lineHeight; }
+
+    text-align: $align;
+}
+
+/// Set breakpoints
+/// @content Set the content of the media query breakpoint
+/// @example scss
+///    @include breakpoint(xs) { ... }
+/// @param {String} $size [default: null]
+@mixin breakpoint($size) {
+    @if $size == xs {
+        @media (min-width: 0px) and (max-width: 768px) {
+            @content;
+        }
+    }
+    @else {
+        @warn "Breakpoint mixin supports: xs";
+    }
+}
+
+/// Set custom border
+/// @example scss
+///    @include border-design(#fff, 50%);
+/// @param {String} $radius [default: null]
+/// @param {String} $size [default: 1px]
+/// @param {String} $style [default: solid]
+@mixin border-design($radius, $size: 1px, $style: solid) {
+    border: $size $style;
+    border-radius: $radius;
+}
+
+/// Set default pseudo elemtn style
+/// @example scss
+///    @include pseudo;
+/// @param {String} $content [default: '']
+/// @param {String} $display [default: block]
+/// @param {String} $position [default: absolute]
+@mixin pseudo($content: '', $display: block, $position: absolute) {
+    content: $content;
+    display: $display;
+    position: $position;
+}
+
+/// Set size - width and height
+/// @example scss
+///    @include size(50px, 100px);
+/// @param {String} $width [default: 100%]
+/// @param {String} $height [default: $width]
+@mixin size($width: 100%, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+/// Create a circle with a given size
+/// @example scss
+///    @include circle(50px);
+/// @param {String} $size [default: null]
+@mixin circle($size) {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+}
