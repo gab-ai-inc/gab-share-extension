@@ -1,0 +1,57 @@
+doctype html
+
+html
+	head
+		title Share on Gab
+		meta(charset="utf-8")
+		link(href='./popup.css' type='text/css' rel='stylesheet')
+
+
+	body(class='theme--light')
+	
+		div(id='popup' class='popup background-color--x1 logged-out')
+			
+
+			//- BLOCK - Header
+			header(class='header no-select border-color--x1')
+				a(class='header__logo' href='https://gab.com' target='_blank' rel='noopener noreferrer' title='Gab.com')
+					img(class='header__img-logo' src='../assets/images/logo/gab-logo.png')
+
+				div(class='header__right')
+					a(id='auth' class='header__link text-color--x2' target='_blank' href='https://share.gab.com/connect-gab' title='Sign in to Gab.com') Sign In
+						img(class='header__signin-img' src='../assets/images/icons/login.png')
+					img(id='profile-photo' class='header__img' src='../assets/images/icons/profile-photo.png')
+			
+
+			//- BLOCK - Main
+			div(class='main' role='main')
+				//- BLOCK - Main - Logged In
+				div(id='main__logged-in' class='main__inner rel')
+					h1(class='main__title no-select text-color--x2') Share a post with your followers
+					div(class='main-post background-color--x2 border-color--x1')
+						textarea(id='post' class='main-post__textarea text-color--x1' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false' maxlength='3000' placeholder='Compose a new post')
+						div(class='main-post-footer-block border-color--x1')
+							div(class='main-post-footer-block__inner')
+								div(class='main-post-footer-block__item')
+									label(class='main-post-footer-block__title text-color--x3')
+										span(id='main-post-footer-character-count') 0
+										| &nbsp;/ 3000 characters
+								div(class='main-post-footer-block__item')
+									label(class='main-post-footer-block__title text-color--x3 pointer no-select') NSFW
+										input(id='nsfw-checkbox' class='main-post-footer-block__input pointer' type='checkbox')
+						
+					//- BLOCK - Footer
+					footer(class='footer')
+						span(id='tip-block' class='footer__tip')
+							b(class='footer__tip-title no-select text-color--x3') Tip:
+							p(id='tip-text' class='footer__tip-content text-color--x3')
+						button(id='submit' class='footer__btn no-select rel' title='Post to Gab')
+				
+				//- BLOCK - Main - Logged Out
+				div(id='main__logged-out' class='main__inner')
+					span(class='main__pointer abs')
+					h1(class='main__title no-select text-color--x2') Sign-In to your Gab.com account
+					h2(class='main__subtitle no-select text-color--x2') You will be redirected to a new window on Gab.com
+
+
+		script(src='./popup.js')

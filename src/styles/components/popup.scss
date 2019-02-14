@@ -1,0 +1,309 @@
+/*================================================
+    POPUP
+================================================*/
+
+.popup {
+    display: block;
+    min-width: 380px;
+    min-height: 230px;
+    overflow: hidden;
+    color: #000;
+
+    &.logged-in {
+        #main__logged-out,
+        .header__link {
+            display: none;
+        }
+
+        #main__logged-in,
+        .header__img {
+            display: block;
+        }
+    }
+
+    &.logged-out {
+        #main__logged-out {
+            display: block;
+        }
+
+        #main__logged-in {
+            display: none;
+        }
+    }
+
+    &.loading {
+        .footer__btn:after {
+            content: 'Loading';
+        }
+
+        #main__logged-out .main__pointer,
+        #main__logged-out .main__title {
+            opacity: 0.0;
+        }
+
+        #main__logged-in:before {
+            background-position: center 40px;
+        }
+
+        #main__logged-out:before {
+            background-position: center;
+        }
+
+        .main__inner:before {
+           background-image: url(../assets/images/icons/spinner.gif);
+           background-size: 60px 60px;
+           background-repeat: no-repeat;
+
+           @include pseudo;
+           @include size(100%);
+        }
+
+        .main-post__textarea {
+            opacity: 0.15;
+        }
+    }
+}
+
+/*================================================
+    HEADER
+================================================*/
+
+.header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 1px solid;
+    padding: 0 10px;
+
+    @include size(100%, 40px);
+
+    &__logo {
+        display: inline-block;
+        margin-right: auto;
+    }
+
+    &__right {
+        display: inline-block;
+        margin-left: auto;
+    }
+
+    &__link {
+        display: block;
+        text-decoration: none;
+        font-size: 10px;
+        vertical-align: middle;
+        margin-top: 1px;
+        background-color: transparent;
+        border: none;
+    }
+
+    &__img-logo {
+        display: block;
+
+        @include size(auto, 22px);
+    }
+
+    &__signin-img {
+        display: inline-block;
+        margin-left: 4px;
+        vertical-align: middle;
+
+        @include size(16px);
+    }
+
+    &__img {
+        display: none;
+
+        @include circle(20px);
+    }
+}
+
+/*================================================
+    MAIN
+================================================*/
+
+.main {
+    display: block;
+    padding: 10px 10px 5px 10px;
+
+    &__inner {
+        display: block;
+
+        @include size(100%);
+    }
+
+    &__title {
+        display: block;
+        margin: 5px 0 15px 0;
+
+        @include text-sizing(16px, 400, 1);
+    }
+
+    &__subtitle {
+        display: block;
+
+        @include text-sizing(16px, 400, 1, center);
+    }
+
+    &__pointer {
+        display: block;
+        animation: float 1s ease-in-out alternate infinite;
+
+        @include size(6px);
+        @include abs-position(-25px, 30px);
+
+        &:before {
+            border-left: 2px solid #21cf7b;
+            border-top: 2px solid #21cf7b;
+            transform: rotateZ(45deg);
+
+            @include pseudo;
+            @include size(100%);
+        }
+    }
+}
+
+#main__logged-out .main__title {
+    margin: 30px 0 15px 0;
+    text-align: center;
+}
+
+/*================================================
+    MAIN POST
+================================================*/
+.main-post {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-width: 360px;
+    max-width: 360px;
+    min-height: 80px;
+    max-height: 340px;
+
+    @include border-design(4px);
+
+    &__textarea {
+        display: block;
+        min-width: 360px;
+        max-width: 360px;
+        min-height: 64px;
+        max-height: 304px;
+        padding: 8px 8px 2px 8px;
+        outline: none;
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+
+        @include text-sizing(12px, 400, 1.45);
+
+        &:focus {
+            border: 1px solid #21cf7b;
+        }
+    }
+}
+
+.main-post-footer-block {
+    display: block;
+    border-top: 1px solid;
+    height: 16px;
+
+    &__inner {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        padding: 0 8px;
+
+        @include size(100%);
+    }
+
+    &__item {
+        display: flex;
+
+        &:first-of-type {
+            margin-right: auto;
+        }
+
+        &:last-of-type {
+            margin-left: auto;
+        }
+    }
+
+    &__title {
+        display: inline-block;
+        vertical-align: middle;
+
+        @include text-sizing(10px, 400, 16px);
+    }
+
+    &__input {
+        display: inline-block;
+        vertical-align: top;
+        margin: 3px 0 0 8px;
+        width: 8px;
+    }
+}
+
+/*================================================
+    FOOTER
+================================================*/
+
+.footer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 5px 0px 10px 0px;
+    margin-top: 10px;
+
+    @include size(100%, 50px);
+
+    &__tip {
+        display: inline-block;
+        flex: 1 1;
+    }
+
+    &__tip-title {
+        display: block;
+
+        @include text-sizing(10px, 600, 1);
+    }
+
+    &__tip-content {
+        display: block;
+
+        @include text-sizing(10px, 400, 1);
+
+        b {
+            font-weight: 600;
+        }
+
+        a {
+            font-weight: 600;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        background-color: #21cf7b;
+        margin-left: auto;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        @include size(110px, 34px);
+        @include border-design(17px);
+
+        &:focus {
+            box-shadow: 0px 0px 0px 2px #78e8b2;
+            border-color: #30bb78;
+        }
+
+        &:after {
+            color: #fff;
+            height: 34px;
+
+            @include pseudo('Post to Gab');
+            @include text-sizing(12px, 600, 34px, center);
+        }
+    }
+}

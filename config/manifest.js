@@ -17,5 +17,9 @@ module.exports = manifest = {
         "notifications",
         "https://*.gab.com/*"
     ],
+    "browser_action": {
+        "default_icon": "assets/images/logo/gab-g-128.png",
+        "default_popup": "popup/popup.html"
+    },
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self' https://*.gab.com/*"
 }
