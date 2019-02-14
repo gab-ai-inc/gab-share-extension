@@ -21,5 +21,13 @@ module.exports = manifest = {
         "default_icon": "assets/images/logo/gab-g-128.png",
         "default_popup": "popup/popup.html"
     },
+    "commands": {
+        "_execute_browser_action": {
+            "suggested_key": {
+                "default": "Alt+Shift+G",
+                "mac": "Alt+Shift+G"
+            }
+        }
+    },
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self' https://*.gab.com/*"
 }
