@@ -227,6 +227,7 @@ gulp.task('scripts', () => {
 
         promises.push(getPromise('popup', 'src/scripts/components/popup.js', browser));
         promises.push(getPromise('options', 'src/scripts/components/options.js', browser));
+        promises.push(getPromise('background', 'src/scripts/background/**', browser));
     };
 
     return Promise.all(promises);
@@ -296,6 +297,7 @@ gulp.task('html', () => {
 
         promises.push(getPromise('popup', browser.path));
         promises.push(getPromise('options', browser.path));
+        promises.push(getPromise('background', browser.path));
     };
 
     return Promise.all(promises);

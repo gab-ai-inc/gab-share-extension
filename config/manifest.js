@@ -29,5 +29,10 @@ module.exports = manifest = {
             }
         }
     },
+    "background": {
+        "scripts": [
+            "background/background.js"
+        ]
+    },
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self' https://*.gab.com/*"
 }
