@@ -1,0 +1,122 @@
+doctype html
+
+html
+	head
+		title GabShareExtension - Options
+		meta(charset="utf-8")
+		link(href='./options.css' type='text/css' rel='stylesheet')
+	
+	
+	body(class='theme--light')
+		div(class='main background-color--x1')
+			
+
+			header(class='header fixed background-color--x2 border-color--x1')
+				div(class='header__inner')
+					img(class='header__img-logo' src='../assets/images/logo/gab-logo.png')
+					h1(class='header__title text-color--x1 border-color--x1') Gab Share Extension &mdash; Options
+					span(class='header__subtitle text-color--x3') Close this page when you're done
+			
+
+			div(class='content rel')
+				div(class='content__inner')
+					
+
+					//- BLOCK - Popup
+					div(class='input-block border-color--x1')
+						div(class='input-block__meta no-select')
+							span(class='input-block__meta-title text-color--x1') Popup
+							span(class='input-block__meta-subtitle text-color--x2') Settings related to the Extension's Popup located in your Navigation Bar.
+						div(class='input-block__items')
+
+							div(class='input-block-item')
+								label(class='input-block-item__title no-select text-color--x1') Theme:
+								div(class='input-block-item__radio-group')
+									label(class='input-block-item__radio-block no-select text-color--x1')
+										input(class='input-block-item__radio' name='theme' type='radio' value='light' checked='')
+										| Light
+									label(class='input-block-item__radio-block no-select text-color--x1')
+										input(class='input-block-item__radio' name='theme' type='radio' value='dark')
+										| Dark
+
+							label(class='input-block-item no-select text-color--x1')
+								input(id='checkbox_hide-tips' class='input-block-item__checkbox' type='checkbox')
+								| Hide Tips
+							
+							label(class='input-block-item no-select text-color--x1')
+								input(id='checkbox_notification-enabled' class='input-block-item__checkbox' type='checkbox' checked='')
+								| Show Notification
+
+
+					//- BLOCK - Context Menu
+					div(class='input-block border-color--x1')
+						div(class='input-block__meta no-select')
+							span(class='input-block__meta-title text-color--x1') Context Menu
+							span(class='input-block__meta-subtitle text-color--x2')
+								| When on a webpage, right click and find 
+								b "Share on Gab"
+								| . Select this button to post to Gab. If you have any text selected, it will be prepended to the post.
+						div(class='input-block__items')
+
+							label(class='input-block-item no-select text-color--x1')
+								input(id='checkbox_context-menu-enabled' class='input-block-item__checkbox' type='checkbox' checked='')
+								| Enabled
+
+
+					//- BLOCK - Account
+					div(class='input-block border-color--x1')
+						div(class='input-block__meta no-select')
+							span(class='input-block__meta-title text-color--x1') Account
+							span(class='input-block__meta-subtitle text-color--x2') In order for this Extension to work, a unique key is saved to your browser's local storage system. No other information is saved, stored or tracked.
+						div(class='input-block__items')
+							button(id='log-out-btn' class='input-block-item__btn') Log Out
+								
+					//- BLOCK - Permissions
+					div(class='input-block border-color--x1')
+						div(class='input-block__meta no-select')
+							span(class='input-block__meta-title text-color--x1') About Browser Permissions
+						div(class='input-block__items input-block__items--full')
+							p(class='input-block-item__paragraph text-color--x1')
+								b Active Tab:&nbsp;
+								| The "Active Tab" permission gives this extension temporary access to the currently active tab when the you invoke the extension.&nbsp;
+								| Access to the tab lasts while the you are on that page, and is revoked when the you navigates away or closes the tab.
+							p(class='input-block-item__paragraph text-color--x1')
+								b Storage:&nbsp;
+								| The "Storage" permission gives this extension the ability to save your personal preferences such as light/dark mode to your browser's storage.&nbsp;
+							p(class='input-block-item__paragraph text-color--x1')
+								b Context Menus:&nbsp;
+								| A "Context Menu" is an action listed in the small popup when you right click on a web page. This permission enables the extension to create the "Share on Gab" context menu so that you can right click (and even highlight specific text) and share with one tap.
+							p(class='input-block-item__paragraph text-color--x1')
+								b Notifications:&nbsp;
+								| The "Notifications" permission gives this extension the ability to send a single notification after a new gab was posted. The sent notification provides a link to click back to your newly created gab post.
+
+					//- BLOCK - Contact
+					div(class='input-block border-color--x1')
+						div(class='input-block__meta no-select')
+							span(class='input-block__meta-title text-color--x1') Contact
+						div(class='input-block__items input-block__items--full')
+
+							p(class='input-block-item__paragraph text-color--x1')
+								| If you have any questions, ideas, bugs or anything else, please post a new gab using the hashtag: 
+								b #GabShareExtension
+								| .
+							p(class='input-block-item__paragraph text-color--x1')
+								| Your question, idea or bug may have already been posted by someone else, please have a look at the most recent posts using hashtag 
+								b #GabShareExtension
+								|  here: 
+								a(class='input-block-item__paragraph-link text-color--x1' rel='noreferrer nofollow' href='https://gab.com/hash/GabShareExtension' target='_blank') gab.com/hash/GabShareExtension
+								| .
+							p(class='input-block-item__paragraph text-color--x1') Please be mindful that when submitting a post, more is better. Include any and all information related to your query, use photos or videos if necessary and someone will be sure to respond in a timely manner.
+							p(class='input-block-item__paragraph input-block-item__paragraph--about-extension border-color--x1 text-color--x1') 
+								b Browser:&nbsp;
+								span(id='extension-about__browser') __BROWSER_NAME__
+								b Version:&nbsp;
+								span(id='extension-about__version') __VERSION__
+								b Download:&nbsp;
+								a(class='input-block-item__paragraph-link text-color--x1' rel='noreferrer nofollow' href='https://share.gab.com/download' target='_blank') share.gab.com/download
+							p(class='input-block-item__paragraph center input-block-item__paragraph--about-extension border-color--x1 text-color--x1') 
+								| Copyright &copy; 2019 Gab AI, Inc.
+								br
+								| Made in USA
+
+		script(src='./options.js')

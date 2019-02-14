@@ -118,6 +118,7 @@ gulp.task('styles', function () {
         let browser = Browsers[i];
 
         promises.push(getPromise('popup', browser.path));
+        promises.push(getPromise('options', browser.path));
     };
 
     return Promise.all(promises);
@@ -225,6 +226,7 @@ gulp.task('scripts', () => {
         let browser = Browsers[i];
 
         promises.push(getPromise('popup', 'src/scripts/components/popup.js', browser));
+        promises.push(getPromise('options', 'src/scripts/components/options.js', browser));
     };
 
     return Promise.all(promises);
@@ -293,6 +295,7 @@ gulp.task('html', () => {
         let browser = Browsers[i];
 
         promises.push(getPromise('popup', browser.path));
+        promises.push(getPromise('options', browser.path));
     };
 
     return Promise.all(promises);
