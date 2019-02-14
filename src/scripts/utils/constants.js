@@ -1,0 +1,52 @@
+/* MESSAGES */
+var MESSAGE_AUTH_RESULT = 'auth-result';
+var MESSAGE_CLOSE_WINDOW = 'close-window';
+
+/* BROWSERS */
+var BROWSER_CHROME_SLUG = 'chrome';
+var BROWSER_FIREFOX_SLUG = 'firefox';
+
+/* BASE URI FOR GAB SHARE */
+var BASE_URI = 'https://share.gab.com';
+
+/* ACTIONS */
+var BACKGROUND_ACTION_GET_KEY = 'get_key';
+var BACKGROUND_ACTION_POST_STATUS = 'post_status';
+var BACKGROUND_ACTION_SET_KEY = 'set_key';
+var BACKGROUND_ACTION_LOGOUT = 'logout';
+var BACKGROUND_ACTION_LOGGED_IN = 'logged_in';
+var BACKGROUND_ACTION_CONTEXT_MENU_ENABLED = 'context_menu_enabled';
+var BACKGROUND_ACTION_VERSION_CHECK = 'check_version';
+
+/* THEMES */
+var THEME_LIGHT = 'light';
+var THEME_DARK = 'dark';
+
+/* GAB POST STATUS */
+var POST_STATUS_PENDING = 'pending';
+var POST_STATUS_ERROR = 'error';
+var POST_STATUS_COMPLETE = 'complete';
+
+/* STORAGE */
+var ONE_DAY_IN_MS = 86400000;
+var STORAGE_BASE = 'gab_share_extension_data';
+
+var STORAGE_KEY_THEME = 'theme';
+var STORAGE_KEY_TIPS_ENABLED = 'tips_enabled';
+var STORAGE_KEY_CONTEXT_MENU_ENABLED = 'context_menu_enabled';
+var STORAGE_KEY_NOTIFICATION_ENABLED = 'notification_enabled';
+var STORAGE_KEY_LOGGED_IN = 'logged_in';
+var STORAGE_KEY_VERSION = 'version';
+
+var STORAGE_DEFAULT_PARAMS = {};
+STORAGE_DEFAULT_PARAMS[STORAGE_KEY_THEME] = 'light';
+STORAGE_DEFAULT_PARAMS[STORAGE_KEY_TIPS_ENABLED] = true;
+STORAGE_DEFAULT_PARAMS[STORAGE_KEY_CONTEXT_MENU_ENABLED] = true;
+STORAGE_DEFAULT_PARAMS[STORAGE_KEY_NOTIFICATION_ENABLED] = true;
+STORAGE_DEFAULT_PARAMS[STORAGE_KEY_LOGGED_IN] = false;
+STORAGE_DEFAULT_PARAMS[STORAGE_KEY_VERSION] = {version: 0, expiresAt: -1};
+
+var STORAGE_KEY_ALL = 'all';
+
+/* CONTEXT MENU */
+var CONTEXT_MENU_ID = 'quick_post_status';
