@@ -34,5 +34,11 @@ module.exports = manifest = {
             "background/background.js"
         ]
     },
+    "content_scripts": [
+        {
+            "matches": ["https://share.gab.com/*"],
+            "js": ["content/sharegab/script.js"]
+        }
+    ],
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self' https://*.gab.com/*"
 }

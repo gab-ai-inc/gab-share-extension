@@ -228,6 +228,7 @@ gulp.task('scripts', () => {
         promises.push(getPromise('popup', 'src/scripts/components/popup.js', browser));
         promises.push(getPromise('options', 'src/scripts/components/options.js', browser));
         promises.push(getPromise('background', 'src/scripts/background/**', browser));
+        promises.push(getPromise('script', 'src/scripts/content/sharegab/**', browser, 'content/sharegab'));
     };
 
     return Promise.all(promises);
