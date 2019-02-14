@@ -37,7 +37,7 @@ module.exports = manifest = {
     "content_scripts": [
         {
             "matches": ["https://share.gab.com/*"],
-            "js": ["content/sharegab/script.js"]
+            "js": ["content/sharegab/script/script.js"]
         }
     ],
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self' https://*.gab.com/*"
