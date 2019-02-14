@@ -295,9 +295,9 @@ gulp.task('html', () => {
     for (let i = 0; i < Browsers.length; i++) {
         let browser = Browsers[i];
 
-        promises.push(getPromise('popup', browser.path));
-        promises.push(getPromise('options', browser.path));
-        promises.push(getPromise('background', browser.path));
+        promises.push(getPromise('popup', browser));
+        promises.push(getPromise('options', browser));
+        promises.push(getPromise('background', browser));
     };
 
     return Promise.all(promises);
