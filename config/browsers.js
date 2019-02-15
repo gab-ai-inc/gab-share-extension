@@ -37,11 +37,24 @@ const firefox = new Browser({
     },
 });
 
+const edge = new Browser({
+    name: 'Microsoft Edge',
+    slug: 'edge',
+    version: '0.1.0',
+    scriptVariableMap: {
+        BROWSER: 'browser',
+        CONTEXT_MENUS: 'contextMenus',
+    },
+    manifestMap: {
+
+    },
+});
 //
 
 const Browsers = [
     chrome,
     firefox,
+    edge,
 ];
 
 module.exports = Browsers;
