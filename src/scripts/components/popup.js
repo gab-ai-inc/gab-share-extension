@@ -213,41 +213,56 @@ var Popup = function() {
      * @function scope.init
      */
     scope.init = function() {
-        //On popup open, get current tab
-        __BROWSER__.tabs.query({
-            active: true,
-            currentWindow: true
-        }, function(tabs) {
-            if (!tabs) return false;
 
-            //Get active tab
-            var activeTab = tabs[0] || {};
+        if (BROWSER_CONFIG.slug === BROWSER_SAFARI_SLUG) {
+            var activeWindow = safari.application.activeBrowserWindow;
+            var activeTab = activeWindow.activeTab;
 
-            //Get title, url
+            if (!isObject(activeTab)) activeTab = {};
+
             var title = activeTab.title || '';
             var url = activeTab.url || '';
 
             //
             onPopupOpen(title, url);
-        });
+        }
+        else {
+            //On popup open, get current tab
+            __BROWSER__.tabs.query({
+                active: true,
+                currentWindow: true
+            }, function(tabs) {
+                if (!tabs) return false;
 
-        //Get config keys from background
-        __BROWSER__.runtime.sendMessage({
-            action: BACKGROUND_ACTION_GET_KEY,
-            key: STORAGE_KEY_ALL
-        }, function(data) {
-            if (!data) return false;
+                //Get active tab
+                var activeTab = tabs[0] || {};
 
-            //Set defaults
-            setTheme(data.theme);
-            setTipsEnabled(data.tips_enabled);
-            setAccountLoggedIn(data.logged_in);
-        });
+                //Get title, url
+                var title = activeTab.title || '';
+                var url = activeTab.url || '';
 
-        //Get current extension version
-        __BROWSER__.runtime.sendMessage({
-            action: BACKGROUND_ACTION_VERSION_CHECK
-        });
+                //
+                onPopupOpen(title, url);
+            });
+
+            //Get config keys from background
+            __BROWSER__.runtime.sendMessage({
+                action: BACKGROUND_ACTION_GET_KEY,
+                key: STORAGE_KEY_ALL
+            }, function(data) {
+                if (!data) return false;
+
+                //Set defaults
+                setTheme(data.theme);
+                setTipsEnabled(data.tips_enabled);
+                setAccountLoggedIn(data.logged_in);
+            });
+
+            //Get current extension version
+            __BROWSER__.runtime.sendMessage({
+                action: BACKGROUND_ACTION_VERSION_CHECK
+            });
+        }
     }
 };
 
