@@ -8,6 +8,7 @@ class Browser {
     };
 
     get path() {
+        if (this.slug === 'safari') return `build/${this.slug}/gabshareextension.safariextension`
         return `build/${this.slug}`;
     };
 };
