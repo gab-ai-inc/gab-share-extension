@@ -167,6 +167,16 @@ var Popup = function() {
     };
 
     /**
+     * @description - Clicked on headerAuthBtn
+     */
+    headerAuthBtn.onclick = function() {
+        //Check if safari
+        if (BROWSER_CONFIG.slug === BROWSER_SAFARI_SLUG) {
+            safari.application.activeBrowserWindow.openTab().url = headerAuthBtn.getAttribute('href');
+        }
+    };
+
+    /**
      * @description - On "submit" button click
      */
     submitBtn.onclick = function() {
