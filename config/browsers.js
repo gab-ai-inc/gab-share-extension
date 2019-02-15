@@ -37,11 +37,25 @@ const firefox = new Browser({
     },
 });
 
+const safari = new Browser({
+    name: 'Apple Safari',
+    slug: 'safari',
+    version: '0.1.0',
+    scriptVariableMap: {
+        BROWSER: 'browser',
+        CONTEXT_MENUS: 'menu',
+    },
+    manifestMap: {
+
+    },
+});
+
 //
 
 const Browsers = [
     chrome,
     firefox,
+    safari,
 ];
 
 module.exports = Browsers;

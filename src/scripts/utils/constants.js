@@ -5,6 +5,7 @@ var MESSAGE_CLOSE_WINDOW = 'close-window';
 /* BROWSERS */
 var BROWSER_CHROME_SLUG = 'chrome';
 var BROWSER_FIREFOX_SLUG = 'firefox';
+var BROWSER_SAFARI_SLUG = 'safari';
 
 /* BASE URI FOR GAB SHARE */
 var BASE_URI = 'https://share.gab.com';
