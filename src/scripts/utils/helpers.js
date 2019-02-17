@@ -39,3 +39,13 @@ var isDate = function(date) {
 var isArray = function(arr) {
     return Array.isArray(arr);
 };
+
+/**
+ * @description Internal helper to check if DOMContentLoaded
+ * @function ready
+ * @param {Function} fn
+ */
+function ready(fn) {
+    var d = document;
+    (d.readyState == 'loading') ? d.addEventListener('DOMContentLoaded', fn): fn();
+};
