@@ -11,7 +11,8 @@ var BASE_URI = 'https://share.gab.com';
 
 /* ACTIONS */
 var BACKGROUND_ACTION_GET_KEY = 'get_key';
-var BACKGROUND_ACTION_POST_STATUS = 'post_status';
+var BACKGROUND_ACTION_SEND_SHARE = 'send_share';
+var BACKGROUND_ACTION_SEND_POST= 'send_post';
 var BACKGROUND_ACTION_SET_KEY = 'set_key';
 var BACKGROUND_ACTION_LOGOUT = 'logout';
 var BACKGROUND_ACTION_LOGGED_IN = 'logged_in';

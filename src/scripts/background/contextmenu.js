@@ -42,6 +42,6 @@ function onContextMenuClick(info, tab) {
 
         //Post status
         //Send message background to post status
-        postGab(body, url, nsfw);
+        sendGabShare(body, url, nsfw);
     }
 };

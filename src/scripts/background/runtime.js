@@ -76,14 +76,22 @@ __BROWSER__.runtime.onMessage.addListener(function(message, sender, sendResponse
         //Set enabled in storage
         gses.setValue(STORAGE_KEY_CONTEXT_MENU_ENABLED, value);
     }
-    else if (action === BACKGROUND_ACTION_POST_STATUS) {
+    else if (action === BACKGROUND_ACTION_SEND_SHARE) {
         //
-        var body = message.body || '';
-        var url = message.url || '';
-        var nsfw = message.nsfw;
+        var body = message['body'] || '';
+        var url = message['url'] || '';
+        var nsfw = message['nsfw'];
 
         //Post now
-        postGab(body, url, nsfw, sendResponse);
+        sendGabShare(body, url, nsfw, sendResponse);
+    }
+    else if (action === BACKGROUND_ACTION_SEND_POST) {
+        //
+        var body = message['body'] || '';
+        var nsfw = message['nsfw'];
+
+        //Post now
+        sendGabPost(body, nsfw, sendResponse);
     }
     else if (action === BACKGROUND_ACTION_LOGGED_IN) {
         gses.setValue(STORAGE_KEY_LOGGED_IN, true);
