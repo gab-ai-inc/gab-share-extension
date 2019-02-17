@@ -51,3 +51,6 @@ var STORAGE_KEY_ALL = 'all';
 
 /* CONTEXT MENU */
 var CONTEXT_MENU_ID = 'quick_post_status';
+
+/* GAB GREEN COLOR */
+var COLOR_GAB = '#21cf7a';
