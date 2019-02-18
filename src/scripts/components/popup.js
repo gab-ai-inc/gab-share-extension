@@ -63,7 +63,7 @@ var Popup = function() {
         if (len <= 0) len = 0;
 
         //Set length
-        characterCountElement.innerHTML = len;
+        characterCountElement.textContent = len;
     };
 
     /**
