@@ -107,7 +107,7 @@ var GSETwitter = function() {
         var newBtn = btn.cloneNode(true);
 
         //Change title
-        newBtn.querySelector('.button-text').innerHTML = "Tweet + Gab";
+        newBtn.querySelector('.button-text').textContent = "Tweet + Gab";
         //Gab colors
         newBtn.style.setProperty("background-color", COLOR_GAB, "important");
         newBtn.style.setProperty("color", "#fff", "important");
