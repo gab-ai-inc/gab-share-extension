@@ -19,21 +19,10 @@ var Popup = function() {
     var tipBlock = document.getElementById('tip-block');
     var tipText = document.getElementById('tip-text');
     var submitBtn = document.getElementById('submit');
+    var tips = document.querySelectorAll('.footer__tip-content');
 
     //Set on every popup open
     var currentTabUrl = '';
-
-    //
-
-    //All possible tips
-    var tips = [
-        'Turn on dark mode in the "<a class="text-color--x3" id="options-page-link">Options</a>" page',
-        '<b>Alt + Shift + G</b> then <b>Tab</b>, <b>Enter</b> to instantly post',
-        'Highlight any text, right click then <b>"Share to Gab"</b>',
-        'Use <b>#hashtags</b> and <b>@mention</b> people',
-        'Learn more about this tool by <a class="text-color--x3" id="options-page-link" rel="noreferer noopener" target="_blank">clicking here</a>',
-        'Questions, ideas, bugs? Use <b>#GabShareExtension</b>'
-    ];
 
 
     //Functions
@@ -44,8 +33,8 @@ var Popup = function() {
      */
     body.addEventListener('click', function(event) {
         var target = event.target;
-        //If target is "options-page-link" (defined above in tips[])
-        if (target.id === 'options-page-link') {
+        //If target is .options-page-link
+        if (target.classList.contains('options-page-link')) {
             //Open options page if exists
             if (__BROWSER__.runtime.openOptionsPage) {
                 __BROWSER__.runtime.openOptionsPage();
@@ -74,7 +63,7 @@ var Popup = function() {
         if (len <= 0) len = 0;
 
         //Set length
-        characterCountElement.innerHTML = len;
+        characterCountElement.textContent = len;
     };
 
     /**
@@ -163,7 +152,8 @@ var Popup = function() {
 
         //Get random tip to include in the popups
         var rand = randomIntFromInterval(1, tips.length) - 1;
-        tipText.innerHTML = tips[rand];
+        var tip = tips[rand];
+        tip.classList.remove('hidden');
     };
 
     /**
