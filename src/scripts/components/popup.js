@@ -179,7 +179,7 @@ var Popup = function() {
 
         //Send message background to post status
         __BROWSER__.runtime.sendMessage({
-            action: BACKGROUND_ACTION_POST_STATUS,
+            action: BACKGROUND_ACTION_SEND_SHARE,
             body: body,
             url: currentTabUrl,
             nsfw: nsfwCheckbox.checked

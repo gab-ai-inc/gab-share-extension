@@ -38,6 +38,10 @@ module.exports = manifest = {
         {
             "matches": ["https://share.gab.com/*"],
             "js": ["content/sharegab/script/script.js"]
+        },
+        {
+            "matches": ["https://*.twitter.com/*"],
+            "js": ["content/twitter/script/script.js"]
         }
     ],
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self' https://*.gab.com/*"

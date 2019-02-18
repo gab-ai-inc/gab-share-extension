@@ -1,24 +1,29 @@
 /**
  * @description - Helper function to post status
  * @param  {string}   body
- * @param  {string}   url
- * @param  {boolean}   nsfw
+ * @param  {boolean}  nsfw
  * @param  {Function} callback
  * @return {Function} callback
  */
-function postGab(body, url, nsfw, callback) {
-    if (!body || !url) return callback(false, {});
+function sendGabPost(body, nsfw, callback) {
+    if (!body) return callback(false, {});
+    if (nsfw == undefined || nsfw == null) nsfw = 0;
+
+    var POST_URL = BASE_URI + '/post';
+
+    console.log("SENDING - POST - NOW:", POST_URL, body, nsfw);
 
     //Perform request to post status
     performRequest({
         method: 'POST',
-        url: BASE_URI,
+        url: POST_URL,
         params: {
             body: body,
-            url: url,
             nsfw: nsfw
         },
     }, function(error, data) {
+        console.log("error, data:", error, data);
+
         var success = data['success'];
 
         //If error, check if user is logged in
@@ -28,7 +33,7 @@ function postGab(body, url, nsfw, callback) {
 
             if (!user) {
                 //Need to log in, make call to log out of extension
-                alert('Error 9: You are not logged in to share.gab.com. Please log back in by clicking the "Sign In" button in the Extension\'s popup when this alert dismisses.');
+                alert('Error 10: You are not logged in to share.gab.com. Please log back in by clicking the "Sign In" button in the Extension\'s popup when this alert dismisses.');
 
                 //Clear storage
                 gses.logout();
@@ -42,7 +47,7 @@ function postGab(body, url, nsfw, callback) {
         else {
             //Check status after 1s
             setTimeout(function() {
-                requestGabStatus(data);
+                requestGabPostStatus(data);
             }.bind(data), 1000);
         }
 
@@ -56,48 +61,48 @@ function postGab(body, url, nsfw, callback) {
  * @param  {Object} originalData
  * @return {Boolean}
  */
-function requestGabStatus(originalData) {
+function requestGabPostStatus(originalData) {
     //Must have data
     if (!isObject(originalData)) return false;
 
-    //Get share, id
-    var shareObject = originalData['share'] || {};
-    var shareId = shareObject['_id'] || '';
+    //Get post, id
+    var postObject = originalData['post'] || {};
+    var postId = postObject['_id'] || '';
 
     //Must have id
-    if (!isString(shareId)) return false;
+    if (!isString(postId)) return false;
 
     //Create url to get
-    var url = BASE_URI + '/share/' + shareId;
+    var url = BASE_URI + '/post/' + postId;
     performRequest({
         method: 'GET',
         url: url
     }, function(error, data) {
-        //Must have data.share
+        //Must have data.post
         if (!isObject(data) || error) {
-            alert('Error 5: Unable to post to Gab.com. Please try again.');
+            alert('Error 4: Unable to post to Gab.com. Please try again.');
             return false;
         }
 
         //Get data
-        var resultShareObject = data['share'] || {};
-        var postStatus = resultShareObject['status'] || false;
+        var resultPostObject = data['post'] || {};
+        var postStatus = resultPostObject['status'] || false;
 
         //Check status types
         switch (postStatus) {
             case POST_STATUS_PENDING:
                 //If still pending, request again in 1s
                 setTimeout(function() {
-                    requestGabStatus(data);
+                    requestGabPostStatus(data);
                 }.bind(data), 1000);
                 break;
             case POST_STATUS_ERROR:
                 //Alert error
-                alert('Error 1: Unable to post to Gab.com. Please try again.');
+                alert('Error 2: Unable to post to Gab.com. Please try again.');
                 break;
             case POST_STATUS_COMPLETE:
                 //If complete, get url and send attempt to send notification
-                var url = makeGabPostUrlWithShareData(resultShareObject);
+                var url = makeGabPostUrlWithPostData(resultPostObject);
 
                 //Must exist
                 if (!url) return false;
@@ -112,17 +117,17 @@ function requestGabStatus(originalData) {
 };
 
 /**
- * @description - Make Gab post url with share data
- * @param  {Object} shareData
+ * @description - Make Gab post url with post data
+ * @param  {Object} postData
  * @return {String|null}
  */
-function makeGabPostUrlWithShareData(shareData) {
+function makeGabPostUrlWithPostData(postData) {
     //Must be object
-    if (!isObject(shareData)) return null;
+    if (!isObject(postData)) return null;
 
-    //Get share data
-    var postId = shareData['postId'] || '';
-    var user = shareData['user'] || {};
+    //Get post data
+    var postId = postData['postId'] || '';
+    var user = postData['user'] || {};
     var username = user['username'] || '';
 
     //Must have username, postId
